@@ -21,7 +21,8 @@ public class IntegerToBinary {
     }
 
     public static void main(String[] args) {
-        int n = Integer.parseInt(args[0]);
+        //int n = Integer.parseInt(args[0]);
+        int n = 2324;
         convert(n);
         StdOut.println();
     }
