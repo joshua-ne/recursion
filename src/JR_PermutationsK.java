@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class J_PermutationsK {
+public class JR_PermutationsK {
 
     private static List<String> permute (char[] a, int k) {
 
@@ -38,15 +38,17 @@ public class J_PermutationsK {
             tempAns.addAll(backTrack(nextChar, remainingChoices));
         }
 
-        for(StringBuilder sb : tempAns) {
-            sb.append(curChar);
+        if(curChar != null){
+            for(StringBuilder sb : tempAns) sb.append(curChar);
+
         }
+
 
         return tempAns;
     }
 
     public static void main(String[] args) {
-        int n = 10, k = 8;
+        int n = 3, k = 3;
         String elements = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         char[] a = new char[n];
@@ -57,5 +59,13 @@ public class J_PermutationsK {
             System.out.println(str);
         }
         System.out.println(res.size());
+        System.out.println();
+        Set<Character> set = new HashSet<>();
+        set.add('a');
+        set.add('b');
+        set.add('c');
+        for(StringBuilder sb : backTrack(null, set)){
+            System.out.println(sb.toString());
+        }
     }
 }
