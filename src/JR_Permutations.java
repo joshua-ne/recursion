@@ -24,6 +24,34 @@ public class JR_Permutations {
 
     }
 
+    private static List<StringBuilder> backTrack(Character curChar, Set<Character> choices) {
+        List<StringBuilder> tempAns = new ArrayList<>();
+
+        // reaching the leaf node
+        if (choices.size() == 0) {
+            tempAns.add(new StringBuilder(Character.toString(curChar)));
+            return tempAns;
+        }
+
+        //Iterate to traverse all possible choices
+        Iterator iter = choices.iterator();
+        while (iter.hasNext()) {
+            Character nextChar = (Character) iter.next();
+            //copy the choices and remove the current char from the choices
+            Set<Character> remainingChoices = new HashSet<>(choices);
+            remainingChoices.remove(nextChar);
+
+            //go to next level, will end when remainingChoices reaches to a size of 0
+            tempAns.addAll(backTrack(nextChar, remainingChoices));
+        }
+
+        //append self char and return
+        if(curChar != null){
+            for(StringBuilder sb : tempAns) sb.append(curChar);
+        }
+        return tempAns;
+    }
+
     // swap the characters at indices i and j
     private static void swap(char[] a, int i, int j) {
         char c = a[i];
@@ -48,6 +76,15 @@ public class JR_Permutations {
         permutations2(str.toCharArray(), str.length(), res2);
         for(String s : res2) {
             System.out.println(s);
+        }
+
+        System.out.println();
+        Set<Character> set = new HashSet<>();
+        set.add('a');
+        set.add('b');
+        set.add('c');
+        for(StringBuilder sb : backTrack(null, set)){
+            System.out.println(sb.toString());
         }
     }
 }

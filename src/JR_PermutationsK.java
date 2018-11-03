@@ -22,30 +22,7 @@ public class JR_PermutationsK {
         }
     }
 
-    private static List<StringBuilder> backTrack(Character curChar, Set<Character> choices) {
-        List<StringBuilder> tempAns = new ArrayList<>();
 
-        if (choices.size() == 0) {
-            tempAns.add(new StringBuilder(Character.toString(curChar)));
-            return tempAns;
-        }
-
-        Iterator iter = choices.iterator();
-        while (iter.hasNext()) {
-            Character nextChar = (Character) iter.next();
-            Set<Character> remainingChoices = new HashSet<>(choices);
-            remainingChoices.remove(nextChar);
-            tempAns.addAll(backTrack(nextChar, remainingChoices));
-        }
-
-        if(curChar != null){
-            for(StringBuilder sb : tempAns) sb.append(curChar);
-
-        }
-
-
-        return tempAns;
-    }
 
     public static void main(String[] args) {
         int n = 3, k = 3;
@@ -59,13 +36,6 @@ public class JR_PermutationsK {
             System.out.println(str);
         }
         System.out.println(res.size());
-        System.out.println();
-        Set<Character> set = new HashSet<>();
-        set.add('a');
-        set.add('b');
-        set.add('c');
-        for(StringBuilder sb : backTrack(null, set)){
-            System.out.println(sb.toString());
-        }
+
     }
 }
