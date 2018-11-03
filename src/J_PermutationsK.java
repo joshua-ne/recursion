@@ -20,8 +20,29 @@ public class J_PermutationsK {
             choiceIndexNext.remove(nextCharIndex);
             dfs(level + 1, k, a[nextCharIndex], a, choiceIndexNext, path, res);
         }
+    }
 
+    private static List<StringBuilder> backTrack(Character curChar, Set<Character> choices) {
+        List<StringBuilder> tempAns = new ArrayList<>();
 
+        if (choices.size() == 0) {
+            tempAns.add(new StringBuilder(Character.toString(curChar)));
+            return tempAns;
+        }
+
+        Iterator iter = choices.iterator();
+        while (iter.hasNext()) {
+            Character nextChar = (Character) iter.next();
+            Set<Character> remainingChoices = new HashSet<>(choices);
+            remainingChoices.remove(nextChar);
+            tempAns.addAll(backTrack(nextChar, remainingChoices));
+        }
+
+        for(StringBuilder sb : tempAns) {
+            sb.append(curChar);
+        }
+
+        return tempAns;
     }
 
     public static void main(String[] args) {

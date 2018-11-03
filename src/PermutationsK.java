@@ -46,7 +46,7 @@ public class PermutationsK {
     }  
 
     // helper function that swaps a[i] and a[j]
-    public static void swap(char[] a, int i, int j) {
+    private static void swap(char[] a, int i, int j) {
         char temp = a[i];
         a[i] = a[j];
         a[j] = temp;

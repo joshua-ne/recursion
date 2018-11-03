@@ -25,7 +25,7 @@ public class AnimatedHtree {
         StdDraw.line(x0, y0, x0, y1);
         StdDraw.line(x1, y0, x1, y1);
         StdDraw.show();
-        StdDraw.pause(100);
+        StdDraw.pause(0);
 
 
         draw(n-1, x0, y0, size/2);   // lower left
@@ -37,7 +37,7 @@ public class AnimatedHtree {
     // read in an integer command-line argument n and plot an order n H-tree
     public static void main(String[] args) {
         //int n = Integer.parseInt(args[0]);
-        int n = 5;
+        int n = 10;
         StdDraw.setPenRadius(0.0005);
         StdDraw.enableDoubleBuffering();
         draw(n, 0.5, 0.5, 0.5);
